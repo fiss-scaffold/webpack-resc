@@ -1,0 +1,52 @@
+/**
+ * @file 首页样式文件
+ * @author lenovo
+ */
+
+//@import "reset";
+
+/*index.scss begin*/
+
+body {
+    background-color: #fff;
+    font-size: 14px;
+    h1 {
+        color: black;
+        font-size: 1.5em;
+    }
+    p {
+        text-indent: 2em;
+        margin: 1em 0;
+    }
+}
+
+.big {
+    font-size: 1.5em;
+    font-weight: 800;
+}
+
+.bird-1,
+.bird-2 {
+    display: inline-block;
+    margin: 20px;
+    span {
+        display: inline-block;
+        background-repeat: no-repeat;
+    }
+    .icon {
+        width: 26px;
+        height: 26px;
+    }
+}
+
+.bird-1 .icon {
+    // background-color: #00D3FF;
+    // background-image: url('../img/bird-1.png?__sprite=bird');
+    background-image: url('../img/bird-1.png');
+}
+
+.bird-2 .icon {
+    // background-color: #7AFF00;
+    // background-image: url('../img/bird-2.png?__sprite=bird');
+    background-image: url('../img/bird-2.png');
+}

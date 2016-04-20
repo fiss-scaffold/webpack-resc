@@ -1,8 +1,12 @@
-var path = require('path')
+var path = require('path');
+var webpack = require('webpack');
 var ExtractText = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var SpritesmithPlugin = require('webpack-spritesmith');
 
+
+// 使用 commonsChunkplugin 对共用资源进行优化
+var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
 
 module.exports = {
     entry: {
@@ -11,7 +15,7 @@ module.exports = {
     },
     output: {
         path: __dirname + '/build/',
-        publicPath: '/webpack-test/',
+        // publicPath: '/webpack-test/',
         filename: 'js/[name]/[name].bundl.js',
         sourceMapFilename: '[file].map'
     },
@@ -43,7 +47,7 @@ module.exports = {
             {
                 test: /\.(jpg|gif|png)$/,
                 // loader: 'url-loader?limit=8192'
-                loader: 'file?name=img/[name]_[hash].[ext]'
+                loader: 'file?name=img/[name].[ext]'
             },
             // 与使用 html-webpack-plugin require html 片段时
             // 使用 html-loader 有冲突
@@ -54,6 +58,9 @@ module.exports = {
         ]
     },
     plugins: [
+
+        commonsPlugin, // 共用资源优化
+
         new ExtractText('css/[name].css', {
             allChunks: true
         }),
@@ -62,19 +69,21 @@ module.exports = {
         // 最终生成 index.html
         new HtmlWebpackPlugin({
             // configuration
-            inject: 'head',
+            inject: 'body',
             template: './src/index_template.html',
             filename: 'html/index.html',
-            excludeChunks: 'page1.bundl.js'
+            // chunk: ['main']
+            excludeChunks: ['page1'] // 排除 page1 的资源
         }),
 
         // 对 page1_template HTML 模板文件处理
         // 最终生成 page1.html
         new HtmlWebpackPlugin({
-            inject: 'head',
+            inject: 'body',
             template: './src/page1_template.html',
             filename: 'html/page1.html',
-            excludeChunks: 'main.bundl.js'
+            // chunk: ['page1']
+            excludeChunks: ['main'] // 排除 main 的资源
         }),
 
         // sprite 操作
@@ -88,7 +97,7 @@ module.exports = {
                 css: path.resolve(__dirname, 'build/img/sprite/sprite.css')
             },
             apiOptions: {
-                cssImageRef: "~sprite.png"
+                cssImageRef: "/img/sprite/sprite.png"
             }
         })
     ],

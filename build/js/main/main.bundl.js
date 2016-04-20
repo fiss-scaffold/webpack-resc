@@ -1,46 +1,4 @@
-/******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
-/******/
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
-/******/ 			return installedModules[moduleId].exports;
-/******/
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			exports: {},
-/******/ 			id: moduleId,
-/******/ 			loaded: false
-/******/ 		};
-/******/
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.loaded = true;
-/******/
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/
-/******/
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-/******/
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/webpack-test/";
-/******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(0);
-/******/ })
-/************************************************************************/
-/******/ ([
+webpackJsonp([0],[
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -48,6 +6,22 @@
 	 * @file 页面入口模块
 	 * @author lenovo
 	 */
+	
+	 // var idx = 0;
+	 // Object.defineProperty(__webpack_require__, "p", {
+	 //   get: function() {
+	 //     idx = (idx + 1) % 4;
+	 //     return "cdn" + idx + ".server.com/";
+	 //   }
+	 // });
+	
+	 // var idx = 0;
+	 // __webpack_publick_path__ = function() {
+	 //     idx = (idx + 1) % 4;
+	 //     return "cdn" + idx + ".server.com/";
+	 // }
+	
+	 // window.__webpack_public_path__ = 'http://static.58cdn.com.cn/webpack-test/';
 	
 	// require css
 	__webpack_require__(1);
@@ -67,24 +41,9 @@
 
 
 /***/ },
-/* 1 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 2 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 3 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
+/* 1 */,
+/* 2 */,
+/* 3 */,
 /* 4 */
 /***/ function(module, exports) {
 
@@ -97,12 +56,7 @@
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 6 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
+/* 6 */,
 /* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -111,28 +65,6 @@
 		console.log('foo.js');
 	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))
 
-/***/ },
-/* 8 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;//bar.js
-	!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(9)], __WEBPACK_AMD_DEFINE_RESULT__ = function(base){
-		console.log('bar.js');
-			console.log(new Date());
-	
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))
-
-/***/ },
-/* 9 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_RESULT__;//base.js
-	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(){
-		console.log('base.js');
-		// console.log(new Date());
-		// alert('hallo');
-	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))
-
 /***/ }
-/******/ ]);
+]);
 //# sourceMappingURL=main.bundl.js.map

@@ -10,11 +10,8 @@
     <link rel="stylesheet" type="text/css" href="scss/common_footer.scss">
     <link rel="stylesheet" type="text/css" href="scss/index.scss">
     <link rel="stylesheet" type="text/css" href="css/foo.css"> -->
-    <!-- <link rel="stylesheet" type="text/css" href="/output/js/main.css"> -->
 
-    <script type="text/javascript" src="/build/main.bundl.js"></script>
-    <!-- <script src="http://localhost:8080/webpack-dev-server.js"></script> -->
-<link href="/webpack-test/css/page1.css" rel="stylesheet"><link href="/webpack-test/css/main.css" rel="stylesheet"><script src="/webpack-test/js/page1/page1.bundl.js"></script><script src="/webpack-test/js/main/main.bundl.js"></script></head>
+<link href="../css/common.js.css" rel="stylesheet"><link href="../css/main.css" rel="stylesheet"></head>
 
 <body>
     <!-- <link rel="import" href="fragment/common-head.html?__inline"> -->
@@ -86,6 +83,9 @@
     <!--公共尾部 开始 -->
 <div class="footer">这是公共foot部分 </div>
 <!--公共尾部 结束 -->
-</body>
+
+    <!-- htmlWebpackPlugin -->
+    <!-- ../common.js,../js/main/main.bundl.js -->
+<script src="../common.js"></script><script src="../js/main/main.bundl.js"></script></body>
 
 </html>

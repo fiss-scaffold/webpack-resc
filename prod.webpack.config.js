@@ -8,13 +8,16 @@ var SpritesmithPlugin = require('webpack-spritesmith');
 // 使用 commonsChunkplugin 对共用资源进行优化
 var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
 
+// 使用 UglifyJsPlugin 对 JavaScript 文件进行压缩
+var uglifyjsPlugin = new webpack.optimize.UglifyJsPlugin();
+
 module.exports = {
     entry: {
         main: './src/js/pkg/main.js',
         page1: './src/js/pkg/page1.js'
     },
     output: {
-        path: __dirname + '/build/',
+        path: __dirname + '/publish/',
         // publicPath: '/webpack-test/',
         filename: 'js/[name]/[name].bundl.js',
         sourceMapFilename: '[file].map'
@@ -60,6 +63,7 @@ module.exports = {
     plugins: [
 
         commonsPlugin, // 共用资源优化
+        uglifyjsPlugin,
 
         new ExtractText('css/[name].css', {
             allChunks: true
@@ -93,8 +97,8 @@ module.exports = {
                 glob: '*.png'
             },
             target: {
-                image: path.resolve(__dirname, 'build/img/sprite/sprite.png'),
-                css: path.resolve(__dirname, 'build/img/sprite/sprite.css')
+                image: path.resolve(__dirname, 'publish/img/sprite/sprite.png'),
+                css: path.resolve(__dirname, 'publish/img/sprite/sprite.css')
             },
             apiOptions: {
                 cssImageRef: "/img/sprite/sprite.png"

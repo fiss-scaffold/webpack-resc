@@ -1,0 +1,19 @@
+{
+    "rules": {
+        "no-unused-expressions": [1],
+        "no-undef": [2],
+        "no-use-before-define": [1],
+        "no-unused-vars": [1],
+        "no-eval": [1],
+        "use-isnan": [2],
+        "valid-typeof": [2],
+        "no-unreachable": [1],
+        "no-dupe-args": [1],
+        "no-dupe-keys": [1]
+    },
+    "globals": {
+    	"require": true,
+    	"define": true,
+    	"console": true
+    }
+}

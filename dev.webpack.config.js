@@ -39,9 +39,15 @@ module.exports = {
             {
                 test: /\.css$/,
                 loader: ExtractText.extract('style-loader', 'css-loader')
+                // loader: ExtractText.extract('style-loader', 'css-loader!csslint-loader')
             }, {
                 test: /\.scss$/,
                 loader: ExtractText.extract('style', 'css!sass') // 有问题
+            },
+            {
+                test: /\.js$/,
+                loader: 'eslint-loader',
+                exclude: /(node_modules|lib)/
             },
 
             {
@@ -56,6 +62,11 @@ module.exports = {
             // 	loader: 'html-loader'
             // }
         ]
+    },
+    // eslint-loader 配置
+    eslint: {
+        configFile: './.eslintrc.json', // 指定 eslint 配置文件
+        // emitError: true
     },
     plugins: [
 
@@ -93,8 +104,8 @@ module.exports = {
                 glob: '*.png'
             },
             target: {
-                image: path.resolve(__dirname, 'build/img/sprite/sprite.png'),
-                css: path.resolve(__dirname, 'build/img/sprite/sprite.css')
+                image: path.resolve(__dirname, 'dev/img/sprite/sprite.png'),
+                css: path.resolve(__dirname, 'dev/img/sprite/sprite.css')
             },
             apiOptions: {
                 cssImageRef: "/img/sprite/sprite.png"

@@ -1,0 +1,54 @@
+@charset "UTF-8";
+/**
+ * @file 首页样式文件
+ * @author lenovo
+ */
+/*index.scss begin*/
+body {
+  background-color: #fff;
+  font-size: 14px; }
+  body h1 {
+    color: black;
+    font-size: 1.5em; }
+  body p {
+    text-indent: 2em;
+    margin: 1em 0; }
+
+.big {
+  font-size: 1.5em;
+  font-weight: 800; }
+
+.bird-1,
+.bird-2 {
+  display: inline-block;
+  margin: 20px; }
+  .bird-1 span,
+  .bird-2 span {
+    display: inline-block;
+    background-repeat: no-repeat; }
+/**
+ * @file foo.css
+ * @author lenovo
+ */
+
+body {
+    color: green;
+}
+
+/*.rabbit-1,
+.rabbit-2 {
+    width: 100px;
+    height: 100px;
+}
+*/
+/*.rabbit-1 {
+    background-image: url('../img/rabbit-1.png?__sprite=rabbit');
+    background-image: url('../img/rabbit-1.png');
+}
+
+.rabbit-2 {
+    background-image: url('../img/rabbit-2.png?__sprite=rabbit');
+    background-image: url('../img/rabbit-2.png');
+}*/
+
+/*# sourceMappingURL=main.css.map*/

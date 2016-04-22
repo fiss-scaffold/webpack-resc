@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack --config dev.webpack.config.js --progress --colors --watch",
-    "prod": "webpack --config prod.webpack.config.js --progress --colors"
+    "prod": "webpack --config prod.webpack.config.js --progress --colors",
+    "hmr": "webpack-dev-server --config  dev.webpack.config.js --inline --hot 1>dev.server.log 2>dev.server.err"
   },
   "keywords": [],
   "author": "",

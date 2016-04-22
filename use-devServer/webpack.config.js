@@ -1,13 +1,14 @@
 var path = require("path");
 module.exports = {
   entry: {
-    index: ["./app/main.js"],
-    page1: ["./app/page1.js"]
+    main: ["./app/main.js"],
+    page1: ["./app/page1.js"],
+    // index: "./app/index.html"
   },
   output: {
     path: path.resolve(__dirname, "build"),
-    publicPath: "/assets/",
-    filename: "[name].bundle.js"
+    publicPath: "",
+    filename: "[name].js"
   },
   module: {
   	loaders: [
@@ -19,7 +20,6 @@ module.exports = {
 	  		test: /\.html$/,
 	  		loader: "html-loader"
 	  	}
-
   	]
   }
 };

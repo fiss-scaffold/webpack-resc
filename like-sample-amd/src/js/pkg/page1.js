@@ -12,7 +12,7 @@ require('../../scss/page1.scss');
 require('../../../dev/img/sprite/sprite.css');
 // require('../../../publish/img/sprite/sprite.css');
 
-define(['../mod/base/base', '../mod/bar/bar'], function(base, bar) {
+define(['../mod/base/base', '../mod/bar/bar', '../mod/hello/hello'], function(base, bar) {
     // TODO
 
 });

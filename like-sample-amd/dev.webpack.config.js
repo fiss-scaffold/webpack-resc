@@ -5,13 +5,15 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var SpritesmithPlugin = require('webpack-spritesmith');
 
 
-// 使用 commonsChunkplugin 对共用资源进行优化
-var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
+// 使用 commonsChunkplugin 对公共资源进行优化
+var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 
 module.exports = {
     entry: {
         main: './src/js/pkg/main.js',
-        page1: './src/js/pkg/page1.js'
+        page1: './src/js/pkg/page1.js',
+        page2: './src/js/pkg/page2.js',
+        page3: './src/js/pkg/page3.js'
     },
     output: {
         path: __dirname + '/dev/',
@@ -70,7 +72,24 @@ module.exports = {
     },
     plugins: [
 
-        commonsPlugin, // 共用资源优化
+        // commonsPlugin, // 共用资源优化
+        // main 和 page1 里的公共模块合并到 common1
+        new CommonsChunkPlugin({
+            name: 'common1',
+            chunks: ['main', 'page1']
+        }),
+
+        new CommonsChunkPlugin({
+            name: 'common2',
+            chunks: ['page2', 'page3']
+        }),
+
+        // page1 与 common2 的公共模块合并到 common3
+        new CommonsChunkPlugin({
+            name: 'common3',
+            chunks: ['page1', 'common2']
+        }),
+
 
         new ExtractText('css/[name].css', {
             allChunks: true
@@ -83,8 +102,8 @@ module.exports = {
             inject: 'body',
             template: './src/index_template.html',
             filename: 'html/index.html',
-            // chunk: ['main']
-            excludeChunks: ['page1'] // 排除 page1 的资源
+            chunks: ['main', 'common1'] // 只引入 main 和 common1 ，排除其他一切资源，包括 common2/3
+            // excludeChunks: ['page1', 'page2', 'page3', 'common3'] // 排除 page1 的资源
         }),
 
         // 对 page1_template HTML 模板文件处理
@@ -93,7 +112,7 @@ module.exports = {
             inject: 'body',
             template: './src/page1_template.html',
             filename: 'html/page1.html',
-            // chunk: ['page1']
+            // chunks: ['page1']
             excludeChunks: ['main'] // 排除 main 的资源
         }),
 

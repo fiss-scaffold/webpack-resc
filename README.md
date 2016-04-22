@@ -1,23 +1,93 @@
-# webpack 使用例子
+# webpack 例子说明
 
-## Question
+其中包含两个示例：
 
-1.  样式文件是否只能够内嵌到 page？
-    【可以通过 extract-text-webpack-plugin 导出合成一个样式文件】
+- like-sample-amd: 使用 webpack 构建类似 sample-amd 的项目
+- use-devServer: 使用 webpack-dev-server 进行开发调试
 
-2. 是否可以引用打包好的样式包文件？
-    【导出样式文件包后可以直接引用】
+## like-sample-amd
 
-3. sass 如何处理 ？
-    【通过 sass-loader 对 sass 进行编译】
+本例希望能够通过 webpack 构建类似 [sample-amd]() 的项目，期望满足以下需求：
 
-4. 如何使用 ( style | css | file | url ...)-loader？了解其他 loader 具有哪些功能？
-5. entry 只能指定 js 文件吗？
-6. 如何进行 debug? js 和 css 分别如何进行？
-7. webpack-dev-server 具备哪些功能？提供哪些方便？
-8. 了解其他配置属性及功能。
-9. 如何加载html片段？【html-webpack-plugin】
-10. 如何对sass 进行编译并且导出 css文件？【sass-loader 结合 extract-text-webpack-plugin】
-11. 如何对sass/css 用到的图片进行 sprite？
-12. html-webpack-plugin： 如何去掉多余的 js 文件？ js 文件怎样指定位置插入？
-13. 如何添加 cnd 路径？如何针对不同文件添加对应的 CND 路径？
+- 页面可以引入公共的 html 片段
+- JS 模块使用 AMD 规范开发，并且遵循其模块加载机制
+- JS 包文件的依赖最终都应该合并为一个包
+- 最终产出的 CSS 文件应该是独立的文件
+- 最终产出的 JS/CSS 包文件引用脚本自动添加到对应的页面
+- sass/scss 文件自动编译产出 css
+- JS/CSS 各模块间公共部分模块统一打包成一个 common 包，并且页面自动添加引用
+- 对 css 图标进行 sprite 处理，可以分组处理且自动计算位置，生成代码
+- 开发过程中对代码进行校验
+- 完成开发后对代码进行压缩优化
+- 对静态文件进行版本处理
+- multiple publicPath。能够对不同的文件类型或指定的文件引用进行路径替换，比如 cdn。
+
+
+以上的需求点除了 `sprite` 和 `multiple publicPath` 大都能满足。
+
+sprite 处理现有的资源找不到理想的 plugin 或 loader。在本例中使用的是 [webpack-spritesmith]() 插件，它对所有图片进行处理后生成独立的代码，而不是根据现有的代码生成并替换，还需手动引用。
+
+对于 `multiple publicPath` 并不支持，如果希望通过 webpack 对引用路径进行处理，只能通过 `publicPath` 属性进行设置，但是只能设置一个。网上的一些解决方法大都通过不优雅的 hack 手段完成，可以参考 [Multiple URLs for publicPath to allow multiple CDN subdomains](https://github.com/webpack/webpack/issues/1261) 和 [Multiple publicPath](https://github.com/webpack/webpack/issues/2183#issuecomment-212377326)。
+
+
+### 执行构建
+
+该例提供了 dev 和 prod 两个阶段，prod 相对于 dev 会对代码进行压缩。
+
+安装依赖：
+依赖的模块包含用到的 plugin 和 loader。
+
+```bash
+npm install
+
+```
+
+
+dev:
+
+```bash
+npm run dev
+
+```
+
+prod:
+
+```bash
+npm run prod
+
+```
+
+
+## use-devServer
+
+本示例通过 webpack-dev-server 对项目打包生成的资源提供 web 服务，支持修改模块浏览器自动刷新。并提供 [Hot Module Replacement](http://webpack.github.io/docs/hot-module-replacement-with-webpack.html) 支持，即模块热替换。
+
+
+### 执行构建
+
+安装依赖：
+依赖的模块包含用到的 plugin 和 loader。
+
+```bash
+npm install
+
+```
+
+dev:
+
+构建结果存放在内存中，在项目目录里查看不到。打开 [http://localhost:8080](http://localhost:8080) 查看效果。
+
+```bash
+npm run dev
+
+```
+
+
+build:
+
+构建结果会创建一个 build 目录，目录下的文件即为打包结果。
+
+```bash
+npm run build
+
+```

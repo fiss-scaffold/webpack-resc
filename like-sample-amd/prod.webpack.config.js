@@ -19,7 +19,7 @@ module.exports = {
     output: {
         path: __dirname + '/publish/',
         // publicPath: '/webpack-test/',
-        filename: 'js/[name]/[name].bundl.js',
+        filename: 'js/[name]/[name].bundl.[hash].js',
         sourceMapFilename: '[file].map'
     },
     resolve: {

@@ -7,7 +7,7 @@
 
 ## like-sample-amd
 
-本例希望能够通过 webpack 构建类似 [sample-amd]() 的项目，期望满足以下需求：
+本例希望能够通过 webpack 构建类似 [sample-amd](https://github.com/fiss-scaffold/sample-amd) 的项目，期望满足以下需求：
 
 - 页面可以引入公共的 html 片段
 - JS 模块使用 AMD 规范开发，并且遵循其模块加载机制

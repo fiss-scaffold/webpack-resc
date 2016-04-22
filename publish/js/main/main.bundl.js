@@ -1,2 +1,0 @@
-webpackJsonp([0],[function(o,n,c){var i,t;c(1),c(2),c(3),c(4),c(5),c(6),i=[c(7),c(8)],t=function(o,n){}.apply(n,i),!(void 0!==t&&(o.exports=t))},,,,function(o,n){},function(o,n){},,function(o,n,c){var i;i=function(){console.log("foo.js")}.call(n,c,n,o),!(void 0!==i&&(o.exports=i))}]);
-//# sourceMappingURL=main.bundl.js.map

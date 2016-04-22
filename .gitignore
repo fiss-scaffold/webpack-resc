@@ -1,8 +1,7 @@
 # node_modules
-
 node_modules
 
-#plugin-demo
 plugin-demo
-
 *.log
+dev
+publish
